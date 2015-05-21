@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp watch",
-    "build": "gulp js"
+    "build": "gulp js",
+    "start": "babel-node app.js"
   },
   "author": "",
   "license": "ISC",

@@ -30,6 +30,9 @@
     #- name: Start Redis
     #  service: name=redis-server state=started
 
+    - name: install babel globally
+      npm: name=babel global=yes
+
     - name: install node dependencies
       npm: path=/opt/project
 
