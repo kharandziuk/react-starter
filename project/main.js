@@ -1,10 +1,19 @@
 var React = require('react/addons'),
     key = require('keymaster'),
     EventEmitter = require('events').EventEmitter,
-    _ = require('underscore'),
+    _u = require('underscore'),
     log = require('debug')('main');
 
 window.myDebug = require("debug");
+
+var _ = function() {
+  return _u.apply(this, arguments).chain()
+}
+Object.getOwnPropertyNames(_u).forEach(function(name) {
+  if(typeof _u[name] == 'function') {
+    _[name] = _u[name]
+  }
+})
 
 //key('up', ; });
 //key('down', );
@@ -18,9 +27,9 @@ var keyboardHandlers= {
   'down': function(){ store.moveRY(-step); } //d
 };
 
-var keyboardKeys = _(keyboardHandlers).keys();
+var keyboardKeys = _.keys(keyboardHandlers);
 key(keyboardKeys.join(', '), function() {
-    _(keyboardKeys).chain()
+    _(keyboardKeys)
       .shuffle()
       .filter(key.isPressed)
       .each(el => keyboardHandlers[el]());
