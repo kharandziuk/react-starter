@@ -21,14 +21,14 @@
     - name: install node and npm
       apt: name=nodejs update_cache=yes
 
-    - name: install redis
-      apt: name=redis-server update_cache=yes
+    #- name: install redis
+    #  apt: name=redis-server update_cache=yes
 
-    - name: Create user redis
-      user: name=redis system=yes home=/var/lib/redis shell=/bin/false
+    #- name: Create user redis
+    #  user: name=redis system=yes home=/var/lib/redis shell=/bin/false
 
-    - name: Start Redis
-      service: name=redis-server state=started
+    #- name: Start Redis
+    #  service: name=redis-server state=started
 
     - name: install node dependencies
       npm: path=/opt/project
@@ -36,6 +36,6 @@
     - name: change working directory
       lineinfile: dest=/home/vagrant/.bashrc line='cd /opt/project'
 
-  handlers:
-    - name: Restart Redis
-      service: name=redis state=restarted
+  #handlers:
+  #  - name: Restart Redis
+  #    service: name=redis state=restarted
