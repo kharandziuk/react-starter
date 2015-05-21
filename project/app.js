@@ -6,10 +6,13 @@ var PORT = 8000;
 
 var app = express();
 
-
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: __dirname});
 });
+
+app.use('/static', express.static(__dirname + '/static'));
+
+
 
 var server = app.listen(PORT, function () {
 
